@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var util = require('util');
 const mysql = require('mysql');
+const app = new express();
+
 
 const conn = mysql.createConnection({
   host: "localhost",
@@ -286,5 +288,16 @@ router.get('/get-all-pets', async function(req, res){
   }
 });
 
+/* GET all feed from the database */
+router.get('/get-all-feed', async function(req, res){
+  const sql = "SELECT * FROM feed_tracker.feed";
+  try{
+    const result = await query(sql);
+    res.json(result);
+  }
+  catch(err){
+    console.log("Something went wrong: "+err);
+  }
+});
 
 module.exports = router;
