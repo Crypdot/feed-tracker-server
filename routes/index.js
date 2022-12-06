@@ -4,7 +4,6 @@ var util = require('util');
 const mysql = require('mysql');
 const app = new express();
 
-
 const conn = mysql.createConnection({
   host: "localhost",
   user: "feed-tracker",
